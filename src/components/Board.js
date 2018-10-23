@@ -2,7 +2,6 @@ import Cell from "../components/Cell"
 import React from "react";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {incrementMove} from "../actions";
 
 class Board extends React.Component {
     renderCell(i) {
@@ -38,14 +37,12 @@ class Board extends React.Component {
 
 Board.propTypes = {
     onClick: PropTypes.func.isRequired,
-    incrementMove: PropTypes.func.isRequired,
     colSize: PropTypes.number.isRequired,
     rowSize: PropTypes.number.isRequired
 };
 
 const mapStateToProps = (state,) => {
-    const {rowSize, colSize} = state
-
+    const {rowSize, colSize} = state;
 
     return {rowSize, colSize}
 }

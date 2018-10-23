@@ -1,16 +1,14 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import '../index.css';
 
-class Cell extends React.Component {
+function Cell(props) {
 
-    render() {
-        return (
-            <button className="square" onClick={this.props.onClick}>
-                {this.props.value}
-            </button>
-        )
-    };
+    return (
+        <button className="square" onClick={props.onClick}>
+            {props.value}
+        </button>
+    )
+
 
 }
 

@@ -68,7 +68,8 @@ describe('reducers', () => {
             [reducer(initialState, {
                 type: 'SET_BOARD',
                 colSize: 4,
-                rowSize: 4
+                rowSize: 4,
+                rowToWin: 3
 
             })]
         ).toEqual([

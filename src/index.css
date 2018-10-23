@@ -3,7 +3,14 @@ body {
     margin: 50px;
 }
 
-
+input[type=text] {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 25px 10px;
+    box-sizing: border-box;
+    border: 2px solid blue;
+    border-radius: 20px;
+}
 
 .square {
     background: #fff;
@@ -13,11 +20,9 @@ body {
     font-weight: bold;
     line-height: 34px;
     height: 34px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
     text-align: center;
     width: 34px;
+    border-radius: 15px;
 }
 
 .square:focus {

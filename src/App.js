@@ -7,8 +7,6 @@ import {checkWinner} from './util'
 import {incrementMove, setWin, setBoardPos, setBoard} from "./actions";
 import PropTypes from "prop-types";
 import connect from "react-redux/es/connect/connect";
-import {Input} from 'antd';
-
 
 class App extends React.Component {
     constructor(props) {
@@ -63,24 +61,25 @@ class App extends React.Component {
     onChangeRowToWin = e => {
         if (e.target.value < 3)
             return;
+        if(e.target.value > this.state.colSize || e.target.value > this.state.rowSize)
+            return;
         this.props.dispatch(setBoard(this.state.colSize, this.state.rowSize, e.target.value))
         this.setState({rowToWin: e.target.value});
     }
 
     render() {
-        console.log(this.props.board)
         return (
             <React.Fragment>
-                <div className="center-input">
-                    <Input
+                <div className="text-center">
+                    <input type="text"
                         placeholder="Column Size. Minimum 3"
                         onChange={this.onChangeColumnSize}
                     />
-                    <Input
+                    <input type="text"
                         placeholder="Row Size. Minimum 3"
                         onChange={this.onChangeRowSize}
                     />
-                    <Input
+                    <input type="text"
                         placeholder="Number of Row to Win. Minimum 3"
                         onChange={this.onChangeRowToWin}
                     />
@@ -108,7 +107,7 @@ App.propTypes = {
     won: PropTypes.number.isRequired
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
     const {board, rowToWin, rowSize, colSize, move, won} = state;
 
 
