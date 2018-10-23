@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
 import Board from "./components/Board"
 import './index.css'
 import {checkWinner} from './util'
@@ -47,25 +45,25 @@ class App extends React.Component {
         if (e.target.value < 3) {
             return;
         }
-        this.props.dispatch(setBoard(e.target.value, this.state.rowSize, this.state.rowToWin))
+        this.props.dispatch(setBoard(e.target.value, this.state.rowSize, this.state.rowToWin));
         this.setState({colSize: e.target.value});
-    }
+    };
 
     onChangeRowSize = e => {
         if (e.target.value < 3)
             return;
-        this.props.dispatch(setBoard(this.state.colSize, e.target.value, this.state.rowToWin))
+        this.props.dispatch(setBoard(this.state.colSize, e.target.value, this.state.rowToWin));
         this.setState({rowSize: e.target.value});
-    }
+    };
 
     onChangeRowToWin = e => {
         if (e.target.value < 3)
             return;
         if(e.target.value > this.state.colSize || e.target.value > this.state.rowSize)
             return;
-        this.props.dispatch(setBoard(this.state.colSize, this.state.rowSize, e.target.value))
+        this.props.dispatch(setBoard(this.state.colSize, this.state.rowSize, e.target.value));
         this.setState({rowToWin: e.target.value});
-    }
+    };
 
     render() {
         return (
@@ -105,14 +103,14 @@ App.propTypes = {
     incrementMove: PropTypes.func.isRequired,
     board: PropTypes.array.isRequired,
     won: PropTypes.number.isRequired
-}
+};
 
 const mapStateToProps = (state) => {
     const {board, rowToWin, rowSize, colSize, move, won} = state;
 
 
     return {board, rowToWin, rowSize, colSize, move, won}
-}
+};
 
 
 export default connect(mapStateToProps)(App);
